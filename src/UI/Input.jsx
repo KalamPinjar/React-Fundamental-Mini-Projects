@@ -1,11 +1,14 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-const Input = (props) => {
+import React from "react";
+const Input = React.forwardRef((props, ref) => {
   return (
-    <div className="form-control w-full max-w-xs">
+    <div className="form-control w-full ">
       <label className="label">
         <span className="label-text">{props.label}</span>
       </label>
       <input
+        ref={ref}
         type={props.type}
         placeholder={props.placeholder}
         value={props.value}
@@ -20,6 +23,6 @@ const Input = (props) => {
       />
     </div>
   );
-};
+});
 
 export default Input;

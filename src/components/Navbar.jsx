@@ -1,15 +1,16 @@
 import Modal from "../UI/Modal";
 import ThemeChanger from "../UI/ThemeChanger";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import CartContext from "../context/cart-context";
 import { useContext } from "react";
-const Navbar = () => {
-  const ctx = useContext(CartContext);
-  return (
+import CartContext from "../context/cart-context";
 
-      <div className="min-h-[12vh] navbar sticky top-0 p-4 bg-base-100 z-30  w-full ">
-        <div className="navbar-start p-4 ">
-          {/* <div className="dropdown">
+const Navbar = () => {
+  const cartCtx = useContext(CartContext);
+
+  return (
+    <div className="min-h-[12vh] navbar sticky top-0 p-4 bg-base-100 z-30  w-full ">
+      <div className="navbar-start p-4 ">
+        {/* <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +40,9 @@ const Navbar = () => {
            
           </ul>
         </div> */}
-          <a className="btn btn-ghost normal-case text-xl">Foodify</a>
-        </div>
-        {/* <div className="navbar-center hidden lg:flex ">
+        <a className="btn btn-ghost normal-case text-xl">Foodify</a>
+      </div>
+      {/* <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal ">
           <li>
             <a>Homepage</a>
@@ -52,18 +53,18 @@ const Navbar = () => {
           
         </ul>
       </div> */}
-        <div className="navbar-end indicator lg:flex mr-10">
-          <a className="btn">
-            <Modal cartData={ctx.cartData} />
+      <div className="navbar-end indicator lg:flex mr-10">
+        <a className="btn">
+          <Modal  >
             <ShoppingCartOutlinedIcon />
-            <span className="indicator-item badge badge-secondary">
-              {ctx.cartData.length > 0 ? ctx.cartData.length : 0}
-            </span>{" "}
-          </a>
-        </div>
-        <ThemeChanger />
+          </Modal>
+          <span className="indicator-item badge badge-secondary">
+            {cartCtx.items.length > 0 ? cartCtx.items.length : 0}
+          </span>{" "}
+        </a>
       </div>
-
+      <ThemeChanger />
+    </div>
   );
 };
 
